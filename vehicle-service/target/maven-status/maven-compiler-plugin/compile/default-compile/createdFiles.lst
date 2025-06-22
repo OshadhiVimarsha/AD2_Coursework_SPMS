@@ -1,0 +1,6 @@
+com\spms\vehicle\config\SecurityConfig.class
+com\spms\vehicle\repository\VehicleRepository.class
+com\spms\vehicle\model\Vehicle.class
+com\spms\vehicle\VehicleServiceApplication.class
+com\spms\vehicle\controller\VehicleController.class
+com\spms\vehicle\service\VehicleService.class
