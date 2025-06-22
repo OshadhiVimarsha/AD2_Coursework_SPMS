@@ -1,0 +1,5 @@
+com\spms\parking\repository\ParkingSpaceRepository.class
+com\spms\parking\service\ParkingSpaceService.class
+com\spms\parking\ParkingSpaceServiceApplication.class
+com\spms\parking\controller\ParkingSpaceController.class
+com\spms\parking\model\ParkingSpace.class
