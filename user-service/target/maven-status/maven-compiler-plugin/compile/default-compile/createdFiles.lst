@@ -1,0 +1,6 @@
+com\spms\user\controller\UserController.class
+com\spms\user\model\User.class
+com\spms\user\service\UserService.class
+com\spms\user\repository\UserRepository.class
+com\spms\user\config\WebSecurityConfig.class
+com\spms\user\UserServiceApplication.class
