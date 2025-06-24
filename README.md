@@ -8,7 +8,6 @@ The Smart Parking Management System (SPMS) is a microservice-based platform desi
 
 ## Features
 
-<<<<<<< HEAD
 - User registration and authentication
 - Real-time parking space availability
 - Vehicle registration and simulation of entry/exit
@@ -16,15 +15,6 @@ The Smart Parking Management System (SPMS) is a microservice-based platform desi
 - Service discovery and centralized config with Spring Cloud
 - API Gateway for routing all requests
 - Dockerized services and MySQL database
-=======
-- User registration and authentication  
-- Real-time parking space availability  
-- Vehicle registration and simulation of entry/exit  
-- Digital payment processing with receipt generation  
-- Service discovery and centralized config with Spring Cloud  
-- API Gateway for routing all requests  
-- Dockerized services and MySQL database  
->>>>>>> origin/master
 - Postman-tested backend APIs (no frontend required)
 
 ---
@@ -33,17 +23,10 @@ The Smart Parking Management System (SPMS) is a microservice-based platform desi
 
 ### Prerequisites
 
-<<<<<<< HEAD
 - Java 17+
 - Maven
 - Docker & Docker Compose
 - MySQL (or use Docker container)
-=======
-- Java 17+  
-- Maven  
-- Docker & Docker Compose  
-- MySQL (or use Docker container)  
->>>>>>> origin/master
 - Postman
 
 ### Running the Application
@@ -60,11 +43,7 @@ docker-compose up --build
 ```
 ### 3. Access Services
 
-<<<<<<< HEAD
 - **Eureka Dashboard:** [http://localhost:8761](http://localhost:8761)
-=======
-- **Eureka Dashboard:** [http://localhost:8761](http://localhost:8761)  
->>>>>>> origin/master
 - **API Gateway:** [http://localhost:8080](http://localhost:8080)
 - **Config Server:** [http://localhost:8888](http://localhost:8888)
 
@@ -76,17 +55,10 @@ The API documentation is available in the Postman collection: [Postman Collectio
 
 
 - This collection includes detailed requests and responses for all major features:
-<<<<<<< HEAD
-    - User registration, login, and profile management
-    - Vehicle registration and entry/exit simulation
-    - Parking space listing, reservation, and release
-    - Payment processing and receipt generation
-=======
   - User registration, login, and profile management
   - Vehicle registration and entry/exit simulation
   - Parking space listing, reservation, and release
   - Payment processing and receipt generation
->>>>>>> origin/master
 - Import the collection into Postman to explore and test each endpoint.
 
 
