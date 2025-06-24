@@ -47,6 +47,9 @@ docker-compose up --build
 - **API Gateway:** [http://localhost:8080](http://localhost:8080)
 - **Config Server:** [http://localhost:8888](http://localhost:8888)
 
+
+## API Documentation
+
 The API documentation is available in the Postman collection: [Postman Collection](https://raw.githubusercontent.com/OshadhiVimarsha/AD2_Coursework_SPMS/49f6e00c3a2442e87c38b3c9674746138b9ff27f/docs/postman-collection/Ad2_Coursework.postman_collection.json)
 
 
