@@ -34,7 +34,7 @@ The Smart Parking Management System (SPMS) is a microservice-based platform desi
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/.git
+git clone https://github.com/OshadhiVimarsha/AD2_Coursework_SPMS.git
 cd spms
 ```
 2. Start the Docker containers:
@@ -49,7 +49,7 @@ docker-compose up --build
 
 The API documentation is available in the Postman collection:
 
-📎 [Postman Collection]()
+📎 [Postman Collection](https://github.com/OshadhiVimarsha/AD2_Coursework_SPMS/blob/49f6e00c3a2442e87c38b3c9674746138b9ff27f/docs/postman-collection/Ad2_Coursework.postman_collection.json)
 
 - This collection includes detailed requests and responses for all major features:
   - User registration, login, and profile management
