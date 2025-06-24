@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/parking")
+@RequestMapping("/api/parking-space")
 public class ParkingSpaceController {
 
     @Autowired
     private ParkingSpaceServiceImpl parkingSpaceService;
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<ParkingSpace> getAllParkingSpaces() {
         return parkingSpaceService.getAllParkingSpaces();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("get/{id}")
     public ResponseEntity<ParkingSpace> getParkingSpaceById(@PathVariable Long id) {
         return parkingSpaceService.getParkingSpaceById(id)
                 .map(ResponseEntity::ok)
@@ -31,23 +31,13 @@ public class ParkingSpaceController {
     public List<ParkingSpace> getAvailableParkingSpaces() {
         return parkingSpaceService.getAvailableParkingSpaces();
     }
-/*
-    @GetMapping("/zone/{zone}")
-    public List<ParkingSpace> getParkingSpacesByZone(@PathVariable String zone) {
-        return parkingSpaceService.getParkingSpacesByZone(zone);
-    }*/
 
-    @GetMapping("/owner/{ownerId}")
-    public List<ParkingSpace> getParkingSpacesByOwner(@PathVariable String ownerId) {
-        return parkingSpaceService.getParkingSpacesByOwner(ownerId);
-    }
-
-    @PostMapping
+    @PostMapping("/save")
     public ParkingSpace createParkingSpace(@RequestBody ParkingSpace parkingSpace) {
         return parkingSpaceService.createParkingSpace(parkingSpace);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<ParkingSpace> updateParkingSpace(
             @PathVariable Long id,
             @RequestBody ParkingSpace parkingSpace) {
@@ -55,23 +45,12 @@ public class ParkingSpaceController {
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteParkingSpace(@PathVariable Long id) {
-        return parkingSpaceService.deleteParkingSpace(id) ?
-                ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteParkingSpace(@PathVariable Long id) {
+        boolean deleted = parkingSpaceService.deleteParkingSpace(id);
+        return deleted
+                ? ResponseEntity.ok("Delete successful")
+                : ResponseEntity.notFound().build();
     }
 
-    /*@PostMapping("/{id}/reserve")
-    public ResponseEntity<ParkingSpace> reserveParkingSpace(
-            @PathVariable Long id,
-            @RequestParam String vehicleId) {
-        ParkingSpace reserved = parkingSpaceService.reserveParkingSpace(id, vehicleId);
-        return reserved != null ? ResponseEntity.ok(reserved) : ResponseEntity.badRequest().build();
-    }
-
-    @PostMapping("/{id}/release")
-    public ResponseEntity<ParkingSpace> releaseParkingSpace(@PathVariable Long id) {
-        ParkingSpace released = parkingSpaceService.releaseParkingSpace(id);
-        return released != null ? ResponseEntity.ok(released) : ResponseEntity.badRequest().build();
-    }*/
 } 

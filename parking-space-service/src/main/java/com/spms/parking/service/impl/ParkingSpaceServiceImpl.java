@@ -27,10 +27,6 @@ public class ParkingSpaceServiceImpl implements ParkingSpaceService {
         return parkingSpaceRepository.findByIsAvailable(true);
     }
 
-    public List<ParkingSpace> getParkingSpacesByOwner(String ownerId) {
-        return parkingSpaceRepository.findByOwnerId(ownerId);
-    }
-
     public ParkingSpace createParkingSpace(ParkingSpace parkingSpace) {
         return parkingSpaceRepository.save(parkingSpace);
     }
@@ -49,27 +45,5 @@ public class ParkingSpaceServiceImpl implements ParkingSpaceService {
             return true;
         }
         return false;
-    }
-
-    public ParkingSpace reserveParkingSpace(Long id, String vehicleId) {
-        Optional<ParkingSpace> parkingSpaceOpt = parkingSpaceRepository.findById(id);
-        if (parkingSpaceOpt.isPresent() && parkingSpaceOpt.get().isAvailable()) {
-            ParkingSpace parkingSpace = parkingSpaceOpt.get();
-            parkingSpace.setAvailable(false);
-            parkingSpace.setCurrentVehicleId(vehicleId);
-            return parkingSpaceRepository.save(parkingSpace);
-        }
-        return null;
-    }
-
-    public ParkingSpace releaseParkingSpace(Long id) {
-        Optional<ParkingSpace> parkingSpaceOpt = parkingSpaceRepository.findById(id);
-        if (parkingSpaceOpt.isPresent() && !parkingSpaceOpt.get().isAvailable()) {
-            ParkingSpace parkingSpace = parkingSpaceOpt.get();
-            parkingSpace.setAvailable(true);
-            parkingSpace.setCurrentVehicleId(null);
-            return parkingSpaceRepository.save(parkingSpace);
-        }
-        return null;
     }
 } 

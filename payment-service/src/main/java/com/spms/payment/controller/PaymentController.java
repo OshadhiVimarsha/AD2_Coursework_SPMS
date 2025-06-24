@@ -15,12 +15,12 @@ public class PaymentController {
     @Autowired
     private PaymentServiceImpl paymentService;
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<Payment> getAllPayments() {
         return paymentService.getAllPayments();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
         return paymentService.getPaymentById(id)
                 .map(ResponseEntity::ok)
@@ -37,7 +37,7 @@ public class PaymentController {
         return paymentService.getPaymentsByParkingSpaceId(parkingSpaceId);
     }
 
-    @PostMapping
+    @PostMapping("/save")
     public Payment createPayment(@RequestBody Payment payment) {
         return paymentService.createPayment(payment);
     }
@@ -48,7 +48,7 @@ public class PaymentController {
         return processed != null ? ResponseEntity.ok(processed) : ResponseEntity.notFound().build();
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<Payment> updatePayment(
             @PathVariable Long id,
             @RequestBody Payment payment) {
@@ -56,9 +56,12 @@ public class PaymentController {
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePayment(@PathVariable Long id) {
-        return paymentService.deletePayment(id) ?
-                ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<String> deletePayment(@PathVariable Long id) {
+        boolean deleted = paymentService.deletePayment(id);
+        return deleted
+                ? ResponseEntity.ok("Delete successful")
+                : ResponseEntity.notFound().build();
     }
+
 } 

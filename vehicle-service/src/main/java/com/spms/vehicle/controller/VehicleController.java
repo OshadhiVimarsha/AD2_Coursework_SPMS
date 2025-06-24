@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/vehicles", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,7 +22,7 @@ public class VehicleController {
         return vehicleService.getAllVehicles();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity<Vehicle> getVehicleById(@PathVariable Long id) {
         return vehicleService.getVehicleById(id)
                 .map(ResponseEntity::ok)
@@ -44,7 +45,7 @@ public class VehicleController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Vehicle> updateVehicle(
             @PathVariable Long id,
             @RequestBody Vehicle vehicle) {
@@ -52,13 +53,17 @@ public class VehicleController {
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
-        return vehicleService.deleteVehicle(id) ?
-                ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Map<String, String>> deleteVehicle(@PathVariable Long id) {
+        if (vehicleService.deleteVehicle(id)) {
+            return ResponseEntity.ok(Map.of("message", "Delete successful"));
+        } else {
+            return ResponseEntity.status(404).body(Map.of("message", "Vehicle not found"));
+        }
     }
 
-    @PutMapping("/{id}/parking-space/{parkingSpaceId}")
+
+    @PutMapping("/update/{id}/parking-space/{parkingSpaceId}")
     public ResponseEntity<Vehicle> updateParkingSpace(
             @PathVariable Long id,
             @PathVariable Long parkingSpaceId) {
@@ -66,7 +71,7 @@ public class VehicleController {
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}/parking-space")
+    @DeleteMapping("delete/{id}/parking-space")
     public ResponseEntity<Vehicle> removeFromParkingSpace(@PathVariable Long id) {
         Vehicle updated = vehicleService.removeFromParkingSpace(id);
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
