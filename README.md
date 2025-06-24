@@ -47,6 +47,7 @@ docker-compose up --build
 - **API Gateway:** [http://localhost:8080](http://localhost:8080)
 - **Config Server:** [http://localhost:8888](http://localhost:8888)
 
+---
 
 ## API Documentation
 
